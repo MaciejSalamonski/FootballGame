@@ -16,11 +16,11 @@ def get_group_stage_data():
 
 def save_group_stage_data_to_json_file():
     data = get_group_stage_data()
-    jsonFile = open("GroupStageData.json", "w")
+    jsonFile = open("../../data/GroupStageData.json", "w")
     jsonFile.write(json.dumps(json.loads(data), indent=4, sort_keys=True))
 
 
-def main()
+def main():
     save_group_stage_data_to_json_file()
 
 
