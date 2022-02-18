@@ -29,7 +29,7 @@ endif()
 project(FootballGame)
 enable_testing()
 
-add_executable(${PROJECT_NAME} src/main.cpp src/dataParser/Parser.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp src/DataParser/Parser.cpp src/DataParser/Reader.cpp src/ApiCommunicator/ApiCommunicator.cpp)
 #add_executable(${PROJECT_NAME}-ut test/SomeClass-ut.cpp)
 #target_link_libraries(${PROJECT_NAME}-ut gtest_main)
 #add_test(NAME ${PROJECT_NAME}_test COMMAND ${PROJECT_NAME}-ut)

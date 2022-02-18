@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../inc/dataParser/nlohmann/json.hpp"
+#include "../../inc/DataParser/nlohmann/json.hpp"
 
 class Parser
 {
