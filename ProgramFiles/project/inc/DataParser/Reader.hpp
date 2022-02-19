@@ -7,8 +7,6 @@
 
 #include "../ApiCommunicator/ApiCommunicator.hpp"
 
-#include "nlohmann/json.hpp"
-
 
 namespace masalamo
 {
@@ -19,7 +17,7 @@ public:
     Reader(std::unique_ptr<IApiCommunicator>&& apiCommunicator, const std::string& filePath);
     ~Reader();
     
-    std::string getContent() const override;
+    nlohmann::json getContent() const override;
 private:
     void read();
 

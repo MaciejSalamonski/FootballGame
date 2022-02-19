@@ -1,6 +1,7 @@
 #pragma once
 
-#include <string>
+#include "../../inc/DataParser/nlohmann/json.hpp"
+
 
 namespace masalamo
 {
@@ -8,7 +9,7 @@ namespace masalamo
 class IReader
 {
 public:
-    virtual std::string getContent() const = 0;
+    virtual nlohmann::json getContent() const = 0;
     virtual ~IReader() = default;
 };
 

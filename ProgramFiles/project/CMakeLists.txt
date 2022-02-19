@@ -43,7 +43,7 @@ target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}-lib)
 
 
 set(TEST_SRC_LIST
-    test/dataParserTests/ReaderTests.cpp
+    test/DataParserTests/ReaderTests.cpp
 )
 
 link_libraries(gmock)

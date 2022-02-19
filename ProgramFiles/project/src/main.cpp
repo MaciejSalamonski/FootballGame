@@ -1,9 +1,10 @@
+#include "../inc/DataParser/Reader.hpp"
+#include "../inc/ApiCommunicator/ApiCommunicator.hpp"
+
 #include <string>
 #include <iostream>
 #include <memory>
 
-#include "../inc/DataParser/Reader.hpp"
-#include "../inc/ApiCommunicator/ApiCommunicator.hpp"
 
 const auto CREATE_JSON_FILE_PATH = std::string{"../../scripts/create_json_files_with_data.py"};
 const auto GROUP_STAGE_FILE_PATH = std::string{"../../data/GroupStageData.json"};

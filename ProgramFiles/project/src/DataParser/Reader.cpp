@@ -28,9 +28,9 @@ void Reader::read()
 }
 
 
-std::string Reader::getContent() const
+nlohmann::json Reader::getContent() const
 {
-    return json_.dump();
+    return json_;
 }
 
 } // masalamo
