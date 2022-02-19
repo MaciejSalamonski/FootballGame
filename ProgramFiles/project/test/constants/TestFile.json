@@ -1,0 +1,8 @@
+{
+    "errors": [],
+    "get": "standings",
+    "paging": {
+        "current": 1,
+        "total": 1
+    }
+}

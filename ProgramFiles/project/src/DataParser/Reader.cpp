@@ -1,9 +1,10 @@
 #include "../../inc/DataParser/Reader.hpp"
 
+
 namespace masalamo
 {
 
-Reader::Reader(std::unique_ptr<ApiCommunicator>&& apiCommunicator, const std::string& filePath)
+Reader::Reader(std::unique_ptr<IApiCommunicator>&& apiCommunicator, const std::string& filePath)
     : apiCommunicator_(std::move(apiCommunicator)), dataFile_(filePath)
 {
     apiCommunicator_->downloadData();

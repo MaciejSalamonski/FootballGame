@@ -1,6 +1,5 @@
 #pragma once
 
-#include "ApiCommunicator.hpp"
 #include "IApiCommunicator.hpp"
 
 #include <string>
