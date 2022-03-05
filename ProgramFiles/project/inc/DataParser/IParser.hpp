@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "../../inc/DataParser/nlohmann/json.hpp"
+#include "../Types/Team.hpp"
 
 
 namespace masalamo
@@ -12,7 +13,7 @@ class IParser
 {
 public:
     virtual ~IParser() = default;
-    virtual std::vector<nlohmann::json> parse() = 0;
+    virtual std::vector<Team> parse() = 0;
 };
 
 } // masalamo

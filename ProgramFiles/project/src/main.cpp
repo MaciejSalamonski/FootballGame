@@ -15,13 +15,16 @@ int main()
 {
     auto apiCommunicator = std::make_unique<masalamo::ApiCommunicator>(CREATE_JSON_FILE_PATH);
     auto reader = std::make_unique<masalamo::Reader>(std::move(apiCommunicator), GROUP_STAGE_FILE_PATH);
-    masalamo::Parser parser(std::move(reader));
+    auto parser = std::make_unique<masalamo::Parser>(std::move(reader));
 
-    std::vector<nlohmann::json> vec = parser.parse();
+    std::vector<masalamo::Team> vec = parser->parse();
 
     for (const auto& el : vec)
     {
-        std::cout << el << '\n';
+        std::cout << " goalsAgainst: " << el.goalsAgainst_ << " goalsFor: " << el.goalsFor_
+                  << " played: " << el.played_ << " win: " << el.win_ << " draw: " << el.draw_
+                  << " lose: " << el.lose_ << " goalsDiff: " << el.goalsDiff_ << " points: " << el.points_
+                  << " rank: " << el.rank_ << " form " << el.form_ << " team: " << el.team_ << " group: " << static_cast<int>(el.group_);
     }
 
     return 0;

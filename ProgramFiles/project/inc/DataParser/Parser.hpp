@@ -12,12 +12,15 @@ class Parser : public IParser
 {
 public:
     Parser(std::unique_ptr<IReader>&& reader);
-    std::vector<nlohmann::json> parse() override;
+    std::vector<Team> parse() override;
 
 private:
-    std::vector<nlohmann::json> processData(const nlohmann::json& data);
+    std::vector<nlohmann::json> extractJsonTeamsData(const nlohmann::json& data);
+    Team fillTeamData(const nlohmann::json& jsonTeamData);
+    std::vector<Team> fillTeamsData(const std::vector<nlohmann::json>& jsonTeamsDataContainer);
 
-    std::vector<nlohmann::json> teamsContainer_;
+    std::vector<nlohmann::json> jsonTeamsContainer_;
+    std::vector<Team> teamsContainer_;
     std::unique_ptr<IReader> reader_;
 };
 
