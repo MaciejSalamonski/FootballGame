@@ -19,13 +19,5 @@ int main()
 
     std::vector<masalamo::Team> vec = parser->parse();
 
-    for (const auto& el : vec)
-    {
-        std::cout << " goalsAgainst: " << el.goalsAgainst_ << " goalsFor: " << el.goalsFor_
-                  << " played: " << el.played_ << " win: " << el.win_ << " draw: " << el.draw_
-                  << " lose: " << el.lose_ << " goalsDiff: " << el.goalsDiff_ << " points: " << el.points_
-                  << " rank: " << el.rank_ << " form " << el.form_ << " team: " << el.team_ << " group: " << static_cast<int>(el.group_);
-    }
-
     return 0;
 }

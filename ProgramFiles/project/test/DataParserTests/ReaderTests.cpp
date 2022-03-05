@@ -12,7 +12,7 @@ using TestPair = std::pair<nlohmann::json, std::string>;
 
 class ReaderFixture : public ::testing::Test
 {
-public:
+protected:
     const std::string READER_TEST_FILE_PATH = {"../test/constants/TestFile.json"};
     const nlohmann::json EXPECTED_RESULT = {
         {
