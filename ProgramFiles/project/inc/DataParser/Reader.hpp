@@ -14,16 +14,17 @@ namespace masalamo
 class Reader : public IReader
 {
 public:
-    Reader(std::unique_ptr<IApiCommunicator>&& apiCommunicator, const std::string& filePath);
+    Reader(IApiCommunicator& apiCommunicator);
+    Reader(IApiCommunicator& apiCommunicator, const std::string& filePath);
     ~Reader();
     
     nlohmann::json getContent() const override;
 private:
     void read();
 
-    std::ifstream dataFile_;
+    std::ifstream dataFile_{"../../data/GroupStageData.json"};
     nlohmann::json json_;
-    std::unique_ptr<IApiCommunicator> apiCommunicator_;
+    IApiCommunicator& apiCommunicator_;
 };
 
 } // masalamo

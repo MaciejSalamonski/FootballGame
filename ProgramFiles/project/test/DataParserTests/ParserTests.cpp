@@ -28,18 +28,19 @@ protected:
         apiCommunicatorMockPtr_ = std::make_unique<ApiCommunicatorMock>();
         EXPECT_CALL(*apiCommunicatorMockPtr_, downloadData()).Times(1);
 
-        readerPtr_ = std::make_unique<Reader>(std::move(apiCommunicatorMockPtr_), PARSER_TEST_FILE_PATH);
+        readerPtr_ = std::make_unique<Reader>(*apiCommunicatorMockPtr_, PARSER_TEST_FILE_PATH);
+        parserPtr_ = std::make_unique<Parser>(*readerPtr_);
     }
 
     std::unique_ptr<ApiCommunicatorMock> apiCommunicatorMockPtr_;
     std::unique_ptr<Reader> readerPtr_;
+    std::unique_ptr<Parser> parserPtr_;
 };
 
 
 TEST_F(ParserFixture, parserShouldReturnContainerWithProperFilledObjectsOfTypeTeam)
 {
-    std::unique_ptr<Parser> parserPtr = std::make_unique<Parser>(std::move(readerPtr_));
-    const std::vector<Team> resultTeamsContainer = parserPtr->parse();
+    const std::vector<Team> resultTeamsContainer = parserPtr_->parse();
 
     EXPECT_EQ(resultTeamsContainer[0], EXPECTED_TEAM_CONTAINER[0]);
     EXPECT_EQ(resultTeamsContainer[1], EXPECTED_TEAM_CONTAINER[1]);

@@ -34,6 +34,7 @@ set(SRC_LIST
     src/ApiCommunicator/ApiCommunicator.cpp
     src/DataParser/Reader.cpp
     src/DataParser/Parser.cpp
+    src/DataManager/DataManager.cpp
 )
 
 include_directories(src)

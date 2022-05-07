@@ -4,10 +4,22 @@
 namespace masalamo
 {
 
-Reader::Reader(std::unique_ptr<IApiCommunicator>&& apiCommunicator, const std::string& filePath)
-    : apiCommunicator_(std::move(apiCommunicator)), dataFile_(filePath)
+Reader::Reader(IApiCommunicator& apiCommunicator)
+    : apiCommunicator_{apiCommunicator}
 {
-    apiCommunicator_->downloadData();
+    apiCommunicator_.downloadData();
+
+    if (dataFile_.is_open())
+    {
+        this->read();
+    }
+}
+
+
+Reader::Reader(IApiCommunicator& apiCommunicator, const std::string& filePath)
+    : apiCommunicator_{apiCommunicator}, dataFile_(filePath)
+{
+    apiCommunicator_.downloadData();
 
     if (dataFile_.is_open())
     {

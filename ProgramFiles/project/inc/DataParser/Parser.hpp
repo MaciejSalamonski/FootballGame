@@ -11,7 +11,7 @@ namespace masalamo
 class Parser : public IParser
 {
 public:
-    Parser(std::unique_ptr<IReader>&& reader);
+    Parser(IReader& reader);
     std::vector<Team> parse() override;
 
 private:
@@ -21,7 +21,7 @@ private:
 
     std::vector<nlohmann::json> jsonTeamsContainer_;
     std::vector<Team> teamsContainer_;
-    std::unique_ptr<IReader> reader_;
+    IReader& reader_;
 };
 
 } // masalamo

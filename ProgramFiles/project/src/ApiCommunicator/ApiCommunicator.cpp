@@ -4,9 +4,14 @@
 namespace masalamo
 {
 
-ApiCommunicator::ApiCommunicator(const std::string& filePath) 
+ApiCommunicator::ApiCommunicator()
+{}
+
+
+ApiCommunicator::ApiCommunicator(const std::string& filePath)
     : filePath_(filePath)
 {}
+
 
 void ApiCommunicator::downloadData()
 {

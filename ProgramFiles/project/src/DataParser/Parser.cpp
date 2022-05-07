@@ -19,14 +19,14 @@ static std::map<std::string, EGroup> GROUP_MAP
 };
 
 
-Parser::Parser(std::unique_ptr<IReader>&& reader)
-    : reader_(std::move(reader)) 
+Parser::Parser(IReader& reader)
+    : reader_(reader) 
 {}
 
 
 std::vector<Team> Parser::parse()
 {
-    const auto readerContnet = reader_->getContent();
+    const auto readerContnet = reader_.getContent();
     const auto jsonTeamsDataContainer = extractJsonTeamsData(readerContnet);
 
     return fillTeamsData(jsonTeamsDataContainer);
