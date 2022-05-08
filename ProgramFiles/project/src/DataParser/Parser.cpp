@@ -2,6 +2,7 @@
 
 #include <map>
 
+#include <iostream>
 
 namespace masalamo
 {
@@ -21,11 +22,20 @@ static std::map<std::string, EGroup> GROUP_MAP
 
 Parser::Parser(IReader& reader)
     : reader_(reader) 
-{}
+{
+    std::cout << "Parser" << '\n';
+}
+
+Parser::~Parser()
+{
+    std::cout << "~Parser" << '\n';
+}
 
 
 std::vector<Team> Parser::parse()
 {
+    std::cout << "parse" << '\n';
+
     const auto readerContnet = reader_.getContent();
     const auto jsonTeamsDataContainer = extractJsonTeamsData(readerContnet);
 
@@ -35,6 +45,8 @@ std::vector<Team> Parser::parse()
 
 std::vector<nlohmann::json> Parser::extractJsonTeamsData(const nlohmann::json& data)
 {
+    std::cout << "extractJsonTeamsData" << '\n';
+
     for (const auto& responseData : data["response"])
     {
         for (const auto& groupData : responseData["league"]["standings"].items())
@@ -52,6 +64,8 @@ std::vector<nlohmann::json> Parser::extractJsonTeamsData(const nlohmann::json& d
 
 std::vector<Team> Parser::fillTeamsData(const std::vector<nlohmann::json>& jsonTeamsDataContainer)
 {
+    std::cout << "fillTeamsData" << '\n';
+
     for (const auto& jsonTeamData : jsonTeamsDataContainer)
     {
         teamsContainer_.emplace_back(fillTeamData(jsonTeamData));

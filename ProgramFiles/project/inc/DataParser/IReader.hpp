@@ -9,7 +9,7 @@ namespace masalamo
 class IReader
 {
 public:
-    virtual nlohmann::json getContent() const = 0;
+    virtual nlohmann::json getContent() = 0;
     virtual ~IReader() = default;
 };
 

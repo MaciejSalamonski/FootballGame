@@ -17,6 +17,7 @@ void ApiCommunicator::downloadData()
 {
     command_.append(filePath_);
     system(command_.c_str());
+    filePath_.clear();
 }
 
 } // masalamo

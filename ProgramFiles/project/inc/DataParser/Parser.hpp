@@ -12,6 +12,7 @@ class Parser : public IParser
 {
 public:
     Parser(IReader& reader);
+    ~Parser();
     std::vector<Team> parse() override;
 
 private:

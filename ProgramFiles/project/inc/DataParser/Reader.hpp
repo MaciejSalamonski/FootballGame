@@ -18,9 +18,10 @@ public:
     Reader(IApiCommunicator& apiCommunicator, const std::string& filePath);
     ~Reader();
     
-    nlohmann::json getContent() const override;
+    nlohmann::json getContent() override;
 private:
     void read();
+    void readDataFromJson();
 
     std::ifstream dataFile_{"../../data/GroupStageData.json"};
     nlohmann::json json_;
