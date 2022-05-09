@@ -19,7 +19,12 @@ public:
     void unsubscribe(IObserver* observer) override;
     void notify() override;
 private:
-    bool isNotReadyToUdpate();
+    bool isReadyToUdpate() const;
+    bool isTimerNotExpired() const;
+    bool isCounterNotInResetedState() const;
+    bool hasMinutePassed() const;
+    void setTimerExpiration(const bool expiration);
+    void resetCounter();
 
     std::list<IObserver*> subscribers_;
     bool expiration_ = false;

@@ -22,17 +22,15 @@ Timer::~Timer()
 void Timer::startTimer()
 {
     std::cout << "startTimer" << '\n';
-    while(true)
+    while(isTimerNotExpired())
     {
-        ++seconds_;
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-
-        if (isNotReadyToUdpate())
+        if (isReadyToUdpate())
         {
-            continue;
+            notify();
         }
-        
-        notify();
+
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        ++seconds_;
     }
 }
 
@@ -40,7 +38,8 @@ void Timer::stopTimer()
 {
     std::cout << "stopTimer" << '\n';
 
-    expiration_ = true;
+    setTimerExpiration(true);
+    resetCounter();
     timerThread_.join();
 }
 
@@ -71,11 +70,42 @@ void Timer::notify()
     }
 }
 
-bool Timer::isNotReadyToUdpate()
+bool Timer::isReadyToUdpate() const
 {
-    std::cout << "isNotReadyToUpdate" << '\n';
+    std::cout << "isReadyToUpdate" << '\n';
 
-    return seconds_ % 20;
+    return isCounterNotInResetedState() && hasMinutePassed();
+}
+
+bool Timer::isTimerNotExpired() const
+{
+    std::cout << "isTimerNotExpired" << '\n';
+
+    return !expiration_;
+}
+
+bool Timer::isCounterNotInResetedState() const
+{
+    return seconds_ != 0;
+}
+
+bool Timer::hasMinutePassed() const
+{
+    return !(seconds_ % 60);
+}
+
+void Timer::setTimerExpiration(const bool expiration)
+{
+    std::cout << "setTimerExpiration" << '\n';
+
+    expiration_ = expiration;
+}
+
+void Timer::resetCounter()
+{
+    std::cout << "resetCounter" << '\n';
+
+    seconds_ = 0;
 }
 
 } // masalamo
