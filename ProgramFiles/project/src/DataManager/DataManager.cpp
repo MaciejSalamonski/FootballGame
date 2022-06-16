@@ -16,6 +16,7 @@ DataManager::DataManager(IParser& parser, ITimer& timer)
 
 DataManager::~DataManager()
 {
+    timer_.unsubscribe(this);
     std::cout << "~DataManager" << '\n';
 }
 
